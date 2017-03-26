@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Movie Explorer</string>
+    <string name="drawer_open">Drawer Opened </string>
+    <string name="drawer_close">Drawer Closed </string>
+    <string name="title_option_setting">Setting</string>
+    <string name="exit_option">Exit</string>
+    <string name="default_poster">http://www.imdb.com/images/nopicture/medium/film.png</string>
+    <string name="network_error">Network not Available ! Please connect to Internet</string>
+    <string name="input_error">Enter the Movie name !!</string>
+
+
+    <string name="title">Title</string>
+    <string name="example_title">Wreck-It Ralph</string>
+
+    <string name="imdbrating">IMDB Rating</string>
+    <string name="example_imdbrating">7.1</string>
+    <string name="imdbvotes">IMDB Votes</string>
+    <string name="example_imdbvotes">2,406</string>
+
+
+    <string name="released">Released</string>
+    <string name="example_release">02 Nov 2012</string>
+    <string name="runtime">Runtime</string>
+    <string name="example_runtime">101 min</string>
+    <string name="director">Director</string>
+    <string name="example_director">Rich Moore</string>
+    <string name="Genre">Genre</string>
+    <string name="example_genre">Animation, Adventure, Comedy</string>
+    <string name="Writer">Writer(s)</string>
+    <string name="example_writer">Rich Moore (story), Phil Johnston (story), Jim Reardon (story), Phil Johnston (screenplay), Jennifer Lee (screenplay), John C. Reilly (additional story material)</string>
+    <string name="actors">Actors</string>
+    <string name="example_actors">John C. Reilly, Sarah Silverman, Jack McBrayer, Jane Lynch</string>
+    <string name="plot">Plot</string>
+    <string name="example_full_plot">"WreckIt Ralph longs to be as beloved as his game's perfect Good Guy, FixIt Felix. Problem is, nobody loves a Bad Guy. But they do love heroes so when a modern, firstperson shooter game arrives featuring toughasnails Sergeant Calhoun, Ralph sees it as his ticket to heroism and happiness. He sneaks into the game with a simple plan win a medal but soon wrecks everything, and accidentally unleashes a deadly enemy that threatens every game in the arcade. Ralph's only hope? Vanellope von Schweetz, a young troublemaking \"glitch\" from a candy-coated cart racing game who might just be the one to teach Ralph what it means to be a Good Guy. But will he realize he is good enough to become a hero before it's \"Game Over\" for the entire arcade?"</string>
+    <string name="language">Language</string>
+    <string name="example_language">Hindi</string>
+    <string name="country">Country</string>
+    <string name="example_country">India</string>
+    <string name="awards">Awards</string>
+    <string name="example_awards">N/A</string>
+    <string name="metascore">Metascore</string>
+    <string name="example_metascore">N/A</string>
+
+    <string-array name="nav_bar_menu">
+        <item>Search Movies</item>
+        <item>Top Rated Movies</item>
+        <item>Upcoming Movies</item>
+        <item>Now Playing Movies</item>
+        <item>Popular Movies</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
