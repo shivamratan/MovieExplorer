@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -20,11 +21,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView=null;
     private RequestQueue requestQueue=null;
     private rec_adapter recyclerAdapter=null;
+    private String MOVIE_TYPE=url.TYPE_MOVIE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -170,6 +174,37 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        final String type_spinner[]={url.LABEL_TYPE_MOVIE,url.LABEL_TYPE_SERIES};
+        final String url_param_arr_type[]={url.TYPE_MOVIE,url.TYPE_SERIES};
+        Spinner spinner = (Spinner)findViewById(R.id.spinner_movietype);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.custom_spinner_textview,type_spinner);
+       // ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,type_spinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+              //  Toast.makeText(MainActivity.this,type_spinner[position]+"Selected !",Toast.LENGTH_LONG).show();
+                MOVIE_TYPE=url_param_arr_type[position];
+
+                switch (position)
+                {
+                    case 0:
+                        et_movie_searcher.setHint("Search Movie");
+                        break;
+                    case 1:
+                        et_movie_searcher.setHint("Search Series");
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
 
@@ -198,6 +233,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.option_menu,menu);
+
+       /* String type_spinner[]={url.TYPE_MOVIE,url.TYPE_SERIES};
+        MenuItem item=menu.findItem(R.id.spinner);
+        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,type_spinner);
+      //  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,type_spinner, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);*/
+
         return true;
     }
 
@@ -245,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
               progressBar.setVisibility(View.VISIBLE);
 
 
-              final String linkurl = url.OMDB_LINK + "/?type=movie&s="+query;
+              final String linkurl = url.OMDB_LINK + "/?type="+MOVIE_TYPE+"&s="+query;
               JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,linkurl, null, new Response.Listener<JSONObject>() {
                   @Override
                   public void onResponse(JSONObject response) {
@@ -443,7 +488,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<size;i++)
         {
             movieinfo.Movie movieitem=moviecollection.get(i);
-            final String query_url=url.OMDB_LINK+"/?plot=full&i="+movieitem.imdbId;
+            final String query_url=url.OMDB_LINK+"/?plot=short&i="+movieitem.imdbId;
             jsonObjectRequest[i]=new JsonObjectRequest(Request.Method.POST, query_url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {

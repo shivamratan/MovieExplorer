@@ -44,18 +44,37 @@
             android:id="@+id/searchBAR_layout"
             >
 
+
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/et_query"
                 android:hint="Search by Movie Name"
                 android:textColor="#000"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:textColorHint="#777"
                 android:background="#ffffff"
                 android:layout_gravity="center_vertical"
 
                 />
+
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#777"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                />
+
+            <Spinner
+                style="@style/spinner_stylefortimtab"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:id="@+id/spinner_movietype"
+                android:layout_weight="2" />
 
             <View
                 android:layout_width="1dp"
@@ -66,11 +85,12 @@
                 />
 
 
+
             <ImageButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_search_draw"
-                app:srcCompat="@android:drawable/ic_search_category_default"
+                app:srcCompat="@drawable/search"
                 android:id="@+id/imageButton_search"
                 android:onClick="searchMovie"
                 android:layout_weight="1" />
@@ -99,21 +119,25 @@
             android:id="@+id/groundFrame"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ProgressBar
-            android:id="@+id/progress_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="gone" />
+
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
             android:id="@+id/recycler_view">
 
         </android.support.v7.widget.RecyclerView>
+
+            <ProgressBar
+                android:id="@+id/progress_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone" />
 
 
         </FrameLayout>
@@ -137,7 +161,7 @@
 
 
  <android.support.design.widget.NavigationView
-     android:layout_width="290dp"
+     android:layout_width="260dp"
      android:layout_height="match_parent"
      android:fitsSystemWindows="true"
      android:layout_gravity="start"
@@ -164,12 +188,5 @@
      </LinearLayout>
 
  </android.support.design.widget.NavigationView>
-
-
-
-
-
-
-
 
 </android.support.v4.widget.DrawerLayout>
