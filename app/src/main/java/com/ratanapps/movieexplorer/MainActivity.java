@@ -52,6 +52,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -282,10 +284,17 @@ public class MainActivity extends AppCompatActivity {
       if(CommonUtils.isNetworkAvailable(this)) {
           CommonUtils.hideKeyBoard(this);
 
-          final String query = et_movie_searcher.getText().toString().trim();
+          String query = et_movie_searcher.getText().toString().trim();
+
+
 
           if(!query.isEmpty())
           {
+              try {
+                  query= URLEncoder.encode(query,"UTF-8");
+              } catch (UnsupportedEncodingException e) {
+                  e.printStackTrace();
+              }
 
               progressBar.setVisibility(View.VISIBLE);
 
